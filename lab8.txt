@@ -1,0 +1,8 @@
+work with the uploaded lab
+
+change it to do the following:
+
+- don't put it all in main()
+- give the user's score when they quit
+
+e.g. it took you 16 guesses to guess five numbers: 3.2 guesses average.
