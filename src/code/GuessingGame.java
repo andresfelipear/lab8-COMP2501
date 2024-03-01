@@ -3,23 +3,32 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Guessing Game of BCIT
+ *
+ * @author Andres Arevalo, Yeongsuk Oh and Sam
+ * @version 1.0
+ */
 class GuessingGame
 {
     private static final int MIN = 1;
     private static final int MAX = 10;
     private static final int COUNTING_RULE = 1;
     private static final String EXITING = "q";
+
+    private final Random random;
     private boolean playAgain;
     private String userInput;
     private int userNumber;
     private int computerNumber;
-    private final Random random;
     private int guess_counter;
     private int numbers_guessed_counter;
     private float guesses_average;
 
-    public GuessingGame()
-    {
+    /**
+     * Constructs a GuessingGame object with initial values for game variables.
+     */
+    public GuessingGame() {
         playAgain = true;
         userInput = null;
         userNumber = 0;
@@ -29,91 +38,134 @@ class GuessingGame
         numbers_guessed_counter = 0;
     }
 
-    public boolean isPlayAgain()
-    {
+    /**
+     * Checks if the game should be played again.
+     * @return true if the game should be played again, false otherwise.
+     */
+    public boolean isPlayAgain() {
         return playAgain;
     }
 
-    public void setPlayAgain(final boolean playAgain)
-    {
+    /**
+     * Sets the playAgain variable to control whether the game should be played again.
+     * @param playAgain true to play the game again, false otherwise.
+     */
+    public void setPlayAgain(final boolean playAgain) {
         this.playAgain = playAgain;
     }
 
-    public String getUserInput()
-    {
+    /**
+     * Gets the user input (either a number or the exit command).
+     * @return the user input as a String.
+     */
+    public String getUserInput() {
         return userInput;
     }
 
-    public void setUserInput(final String userInput)
-    {
+    /**
+     * Sets the user input.
+     * @param userInput the user input as a String.
+     */
+    public void setUserInput(final String userInput) {
         this.userInput = userInput;
     }
 
-    public int getUserNumber()
-    {
+    /**
+     * Gets the user's guessed number.
+     * @return the user's guessed number.
+     */
+    public int getUserNumber() {
         return userNumber;
     }
 
-    public void setUserNumber(final int userNumber)
-    {
+    /**
+     * Sets the user's guessed number.
+     * @param userNumber the user's guessed number.
+     */
+    public void setUserNumber(final int userNumber) {
         this.userNumber = userNumber;
     }
 
-    public int getComputerNumber()
-    {
+    /**
+     * Gets the randomly generated computer number.
+     * @return the computer-generated number.
+     */
+    public int getComputerNumber() {
         return computerNumber;
     }
 
-    public void setComputerNumber()
-    {
+    /**
+     * Generates a random number and sets it as the computer-generated number.
+     */
+    public void setComputerNumber() {
         computerNumber = random.nextInt(MAX - MIN + COUNTING_RULE) + MIN;
     }
 
-    public int getGuess_counter()
-    {
+    /**
+     * Gets the count of guesses made by the user.
+     * @return the count of guesses made.
+     */
+    public int getGuess_counter() {
         return guess_counter;
     }
 
-    public void increaseGuess_counter()
-    {
+    /**
+     * Increases the count of guesses made by the user.
+     */
+    public void increaseGuess_counter() {
         guess_counter++;
     }
 
-    public int getNumbers_guessed_counter()
-    {
+    /**
+     * Gets the count of numbers guessed by the user.
+     * @return the count of numbers guessed.
+     */
+    public int getNumbers_guessed_counter() {
         return numbers_guessed_counter;
     }
 
-    public void increase_numbers_guessed_counter()
-    {
+    /**
+     * Increases the count of numbers guessed by the user.
+     */
+    public void increase_numbers_guessed_counter() {
         numbers_guessed_counter++;
     }
 
-    public float getGuesses_average()
-    {
+    /**
+     * Gets the average number of guesses made by the user.
+     * @return the average number of guesses.
+     */
+    public float getGuesses_average() {
         return guesses_average;
     }
 
-    public void calculateGuesses_average()
-    {
-        if(numbers_guessed_counter == 0)
-        {
+    /**
+     * Calculates and sets the average number of guesses made by the user.
+     */
+    public void calculateGuesses_average() {
+        if(numbers_guessed_counter == 0) {
             guesses_average = 0;
-        }
-        else
-        {
+        } else {
             guesses_average = (float) guess_counter / numbers_guessed_counter;
         }
     }
 
-    public void printGameDetails()
-    {
+    /**
+     * Prints game details including the number of guesses made and the average number of guesses.
+     */
+    public void printGameDetails() {
         System.out.format("It took you %d guesses to guess %d numbers: %.1f guesses average. ",
                           guess_counter,
                           numbers_guessed_counter,
                           guesses_average);
     }
 
+
+    /**
+     * The main method to run the guessing game.
+     * @param args Command-line arguments (not used in this implementation).
+     * @throws FileNotFoundException if the file specified is not found.
+     */
     public static void main(final String[] args) throws FileNotFoundException
     {
 
